@@ -1,5 +1,8 @@
 # Ex.No:1a  			Study of Socket Programming
 
+## Developed By : Selva jobin S
+## Register No  : 212223220102
+
 ## Aim: 
 To perform a study on Socket Programming
 ## Introduction:
@@ -53,6 +56,38 @@ Socket programming finds applications in various domains, including web developm
 4.	Networked Games: Online multiplayer games rely on socket programming to facilitate communication between game clients and servers.
 5.	RPC mechanisms: which allow processes to execute code on a remote server, often use socket programming for communication.
 
+## Program:
+## Client.py:
+```
+import socket
+from datetime import datetime
+s=socket.socket()
+s.bind(('localhost',8000))
+s.listen(5)
+c,addr=s.accept()
+print("Client Address : ",addr)
+now = datetime.now()
+c.send(now.strftime("%d/%m/%Y %H:%M:%S").encode())
+ack=c.recv(1024).decode()
+if ack:
+ print(ack)
+c.close()
+```
+## Server.py:
+```
+import socket
+s=socket.socket()
+s.connect(('localhost',8000))
+print(s.getsockname())
+print(s.recv(1024).decode())
+s.send("acknowledgement recived from the server".encode())
+```
+## Output:
+## Client:
+![321527788-f7ab1687-fbd9-47e1-b21d-1d068bc38f68](https://github.com/selvajobin/SocketStudy/assets/149985750/3273007b-5b5e-473e-80ff-359410618164)
+
+## Server:
+![321527824-12303096-cefa-42a7-b9ca-a408ebafc234](https://github.com/selvajobin/SocketStudy/assets/149985750/16e064fd-1a39-42de-8bd9-7dd3b589b26f)
 
 ## Result:
-Thus the study of Socket Programming Completed Successfully
+Thus the study of Socket Programming Completed Successfully.
